@@ -15,7 +15,7 @@ using namespace std;
 
 /* =================================== */
 /* The number of elements in the array */
-#define N_ELEM (1 << 20)
+#define N_ELEM (3 << 13)
 /* ====================================*/
 
 void swap(long &a, long &b) {

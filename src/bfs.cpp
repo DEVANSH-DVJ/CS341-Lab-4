@@ -17,7 +17,7 @@ using namespace std;
 
 /* =============================================================== */
 #define N_NODES (1 << 20) /* The number of nodes in the tree */
-#define N_LOOPS 1000      /* Number of times to run BFS */
+#define N_LOOPS 500      /* Number of times to run BFS */
 /* =============================================================== */
 
 /* Class to represent a tree node */

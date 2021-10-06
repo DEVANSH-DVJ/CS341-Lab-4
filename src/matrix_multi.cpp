@@ -19,7 +19,7 @@ using namespace std;
 /* The dimension of the matrix */
 /* NOTE: Don't bother yourself with thinking whether the result would overflow -
  * the result doesnt matter */
-#define N_DIMS 1024
+#define N_DIMS 1400
 /* ================================== */
 
 void matrix_product(vector<vector<int64_t>> &A, vector<vector<int64_t>> &B) {
