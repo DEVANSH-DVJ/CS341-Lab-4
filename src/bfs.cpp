@@ -58,18 +58,15 @@ void plant_a_tree(Node *root) {
       curr_node->left = new Node(left_child_val);
       curr_node->right = new Node(right_child_val);
 
-      if (left_child_val < N_NODES)
-        node_Q.push(curr_node->left);
-      if (right_child_val < N_NODES)
-        node_Q.push(curr_node->right);
+      if(left_child_val < N_NODES) node_Q.push(curr_node->left);
+      if(right_child_val < N_NODES) node_Q.push(curr_node->right);
     }
   }
 }
 
 /* Destroy the tree */
 void bulldoze_the_tree(Node *root) {
-  if (root == nullptr)
-    return;
+  if(root == nullptr) return;
 
   bulldoze_the_tree(root->left);
   bulldoze_the_tree(root->right);
@@ -94,10 +91,8 @@ inline void bfs(Node *root) {
       left_child = curr_node->left;
       right_child = curr_node->right;
 
-      if (left_child)
-        node_Q.push(left_child);
-      if (right_child)
-        node_Q.push(right_child);
+      if(left_child) node_Q.push(left_child);
+      if(right_child) node_Q.push(right_child);
     }
   }
 
