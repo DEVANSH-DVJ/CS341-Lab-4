@@ -313,6 +313,68 @@ Pulled \texttt{0xd3ba/champsim-lab:latest}
     \caption{Top Source lines by CPU Utilization for \texttt{matrix\_multi\_2.cpp}}
 \end{figure}
 
+\newpage
+\section{\texttt{quicksort.cpp}}
+
+\subsection*{Performance Snapshot}
+\begin{itemize}
+    \item IPC: 0.748
+    \item Logical Core Utilization: 8.0\% (0.966 out of 12)
+    \item Physical Core Utilization: 15.7\% (0.941 of 6)
+    \item Memory bound: 23.0\% of Pipeline slots
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{vtune/quicksort/ps.png}
+    \caption{Performance Snapshot for \texttt{quicksort.cpp}}
+\end{figure}
+
+\newpage
+\subsection*{Top Functions by CPU Time}
+\begin{table}[H]
+    \begin{tabular}{||l|l||c||}
+        \hline
+        Function                                   & Module                & CPU Time \\
+        \hline
+        \texttt{\_\_memmove\_avx\_unaligned\_erms} & \texttt{libc-2.27.so} & 0.875s   \\
+        \texttt{page\_fault}                       & \texttt{vmlinux}      & 0.511s   \\
+        \texttt{clear\_page\_erms}                 & \texttt{vmlinux}      & 0.228s   \\
+        \texttt{prepare\_exit\_to\_usermode}       & \texttt{vmlinux}      & 0.226s   \\
+        \texttt{perf\_iterate\_ctx}                & \texttt{vmlinux}      & 0.155s   \\
+        Others                                     & N/A                   & 1.545s   \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{vtune/quicksort/hs.png}
+    \caption{Top Functions by CPU Time for \texttt{quicksort.cpp}}
+\end{figure}
+
+\newpage
+\subsection*{Top 5 Source lines by CPU Utilization}
+\begin{table}[H]
+    \begin{tabular}{||l|l||c||}
+        \hline
+        Source                                     & Function                  & CPU Utilization \\
+        \hline
+        \texttt{b = c;}                            & \texttt{void swap()}      & 2.1\%           \\
+        \texttt{if (nums[i] < pivot) \{}           & \texttt{long partition()} & 1.9\%           \\
+        \texttt{slow\_ptr++;}                      & \texttt{long partition()} & 1.7\%           \\
+        \texttt{for (long i = lo; i < hi; i++) \{} & \texttt{long partition()} & 0.6\%           \\
+        \texttt{a = b;}                            & \texttt{void swap()}      & 0.2\%           \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{vtune/quicksort/sc.png}
+    \caption{Top Source lines by CPU Utilization for \texttt{quicksort.cpp}}
+\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Part 2: Simulating with ChampSim
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
