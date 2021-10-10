@@ -126,13 +126,84 @@ Summarize the objective of the lab, what experiments you have conducted, what we
 %% Part 0: Getting Things Ready
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Getting Things Ready}
+\section*{Install \texttt{Intel VTune Profiler}}
+Installed successfully using the stand-alone app using offline installer script present in this \hyperlink{https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/vtune-profiler/download.html?operatingsystem=linux&distributions=webdownload&options=offline}{link}.
 
+It was pretty easy to install \texttt{VTune} using the script. \\
+While installing it showed that I didn't have \texttt{XCB} and \texttt{DRM} packages installed. Upon checking, I confirmed that they were already present. \\
+Even though it failed prerequisites, there was a next option. I didn't face any issues for the rest of installation process. \\
+From start to end, it took around 10-12 minutes to have the application installed. Followed by 3-5 minutes for tutorial.
+
+\section*{Install \texttt{Docker}}
+Had docker setup from other projects. \\
+Version: 20.10.9
+
+\section*{Pull \texttt{ChampSim} Image}
+Pulled \texttt{0xd3ba/champsim-lab:latest}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Part 1: Profiling with VTune
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Profiling with VTune}
+\section{\texttt{bfs.cpp}}
 
+\subsection*{Performance Snapshot}
+\begin{itemize}
+    \item IPC: 1.830
+    \item Logical Core Utilization: 8.2\% (0.979 out of 12)
+    \item Physical Core Utilization: 16.2\% (0.973 of 6)
+    \item Memory bound: 32.0\% of Pipeline slots
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{vtune/bfs/ps.png}
+    \caption{Performance Snapshot for \texttt{bfs.cpp}}
+\end{figure}
+
+\newpage
+\subsection*{Top 5 Functions by CPU Time}
+\begin{table}[H]
+    \begin{tabular}{||l|l||c||}
+        \hline
+        Function                                                                      & Module                & CPU Time \\
+        \hline
+        \texttt{bfs}                                                                  & \texttt{bfs.o}        & 2.621s   \\
+        \texttt{main}                                                                 & \texttt{bfs.o}        & 1.156s   \\
+        \texttt{\_int\_free}                                                          & \texttt{libc-2.27.so} & 0.236s   \\
+        \texttt{\_int\_malloc}                                                        & \texttt{libc-2.27.so} & 0.154s   \\
+        \texttt{\_\_gnu\_cxx::new\_allocator<Node*>::construct<Node*, Node* const\&>} & \texttt{bfs.o}        & 0.124s   \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{vtune/bfs/hs.png}
+    \caption{Top Functions by CPU Time for \texttt{bfs.cpp}}
+\end{figure}
+
+\newpage
+\subsection*{Top 5 Source lines by CPU Utilization}
+\begin{table}[H]
+    \begin{tabular}{||l|l||c||}
+        \hline
+        Source                                               & Function                             & CPU Utilization \\
+        \hline
+        \texttt{if (left\_child) node\_Q.push(left\_child);} & \texttt{inline void bfs(Node *root)} & 22.7\%          \\
+        \texttt{bfs(root);}                                  & \texttt{int main()}                  & 21.6\%          \\
+        \texttt{right\_child = curr\_node->right;}           & \texttt{inline void bfs(Node *root)} & 17.2\%          \\
+        \texttt{for (int i = 0; i < q\_size; i++) \{}        & \texttt{inline void bfs(Node *root)} & 4.8\%           \\
+        \texttt{left\_child = curr\_node->left;}             & \texttt{inline void bfs(Node *root)} & 3.2\%           \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{vtune/bfs/sc.png}
+    \caption{Top Source lines by CPU Utilization for \texttt{bfs.cpp}}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Part 2: Simulating with ChampSim
