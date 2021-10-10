@@ -205,6 +205,60 @@ Pulled \texttt{0xd3ba/champsim-lab:latest}
     \caption{Top Source lines by CPU Utilization for \texttt{bfs.cpp}}
 \end{figure}
 
+\newpage
+\section{\texttt{matrix\_multi.cpp}}
+
+\subsection*{Performance Snapshot}
+\begin{itemize}
+    \item IPC: 0.874
+    \item Logical Core Utilization: 8.2\% (0.982 out of 12)
+    \item Physical Core Utilization: 16.3\% (0.976 of 6)
+    \item Memory bound: 59.1\% of Pipeline slots
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{vtune/matrix_multi/ps.png}
+    \caption{Performance Snapshot for \texttt{matrix\_multi.cpp}}
+\end{figure}
+
+\newpage
+\subsection*{Top Functions by CPU Time}
+\begin{table}[H]
+    \begin{tabular}{||l|l||c||}
+        \hline
+        Function                 & Module                   & CPU Time \\
+        \hline
+        \texttt{matrix\_product} & \texttt{matrix\_multi.o} & 6.597s   \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{vtune/matrix_multi/hs.png}
+    \caption{Top Functions by CPU Time for \texttt{matrix\_multi.cpp}}
+\end{figure}
+
+\newpage
+\subsection*{Top 2 Source lines by CPU Utilization}
+\begin{table}[H]
+    \begin{tabular}{||l|l||c||}
+        \hline
+        Source                                        & Function                        & CPU Utilization \\
+        \hline
+        \texttt{C[i][j] += A[i][k] * B[k][j];}        & \texttt{void matrix\_product()} & 90.9\%          \\
+        \texttt{for (int k = 0; k < N\_DIMS; k++) \{} & \texttt{void matrix\_product()} & 8.6\%           \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{vtune/matrix_multi/sc.png}
+    \caption{Top Source lines by CPU Utilization for \texttt{matrix\_multi.cpp}}
+\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Part 2: Simulating with ChampSim
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
