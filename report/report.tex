@@ -259,6 +259,60 @@ Pulled \texttt{0xd3ba/champsim-lab:latest}
     \caption{Top Source lines by CPU Utilization for \texttt{matrix\_multi.cpp}}
 \end{figure}
 
+\newpage
+\section{\texttt{matrix\_multi\_2.cpp}}
+
+\subsection*{Performance Snapshot}
+\begin{itemize}
+    \item IPC: 1.339
+    \item Logical Core Utilization: 8.2\% (0.981 out of 12)
+    \item Physical Core Utilization: 16.2\% (0.973 of 6)
+    \item Memory bound: 38.0\% of Pipeline slots
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{vtune/matrix_multi_2/ps.png}
+    \caption{Performance Snapshot for \texttt{matrix\_multi\_2.cpp}}
+\end{figure}
+
+\newpage
+\subsection*{Top Functions by CPU Time}
+\begin{table}[H]
+    \begin{tabular}{||l|l||c||}
+        \hline
+        Function                 & Module                      & CPU Time \\
+        \hline
+        \texttt{matrix\_product} & \texttt{matrix\_multi\_2.o} & 4.492s   \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{vtune/matrix_multi_2/hs.png}
+    \caption{Top Functions by CPU Time for \texttt{matrix\_multi\_2.cpp}}
+\end{figure}
+
+\newpage
+\subsection*{Top 2 Source lines by CPU Utilization}
+\begin{table}[H]
+    \begin{tabular}{||l|l||c||}
+        \hline
+        Source                                        & Function                        & CPU Utilization \\
+        \hline
+        \texttt{C[i][j] += A[i][k] * B[k][j];}        & \texttt{void matrix\_product()} & 84.4\%          \\
+        \texttt{for (int k = 0; k < N\_DIMS; k++) \{} & \texttt{void matrix\_product()} & 13.7\%          \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{vtune/matrix_multi_2/sc.png}
+    \caption{Top Source lines by CPU Utilization for \texttt{matrix\_multi\_2.cpp}}
+\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Part 2: Simulating with ChampSim
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
