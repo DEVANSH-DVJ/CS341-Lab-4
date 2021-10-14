@@ -382,24 +382,25 @@ Pulled \texttt{0xd3ba/champsim-lab:latest}
 \chapter{Simulating with ChampSim}
 \section{Prepare traces}
 
-Prepared traces for executables (same as ones used in Part 1). \\
+Generate tracer for champsim: \\
+\texttt{cd /champsim/ChampSim/tracer; ./make\_tracer.sh;} \\
 Used pin to generate traces: \\
-\texttt{pin -t obj-intel64/champsim\_tracer.so -o <program>.trace -t 20000000 -- <executable>;} \\
+\texttt{pin -t obj-intel64/champsim\_tracer.so -o <program>.trace -t 21000000 -- <executable>;} \\
 Used xz to compress the traces: \\
 \texttt{xz -vz <program>.trace --threads=0;}
 
 \begin{table}[H]
     \begin{tabular}{||l||l|c||c||}
         \hline
-        Program                     & Parameters                                       & Execution time & Trace size \\
+        Program                     & Parameters                                         & Execution time & Trace size \\
         \hline
-        \texttt{bfs.o}              & \texttt{N\_NODES (1<<20)}; \texttt{N\_LOOPS 500} & 5.2 s          & 2368 KB    \\
+        \texttt{bfs.o}              & \texttt{N\_NODES (1<<15)}; \texttt{N\_LOOPS 1000}; & 3.4 s          & 2092 KB    \\
         \hline
-        \texttt{matrix\_multi.o}    & \texttt{N\_DIMS 1400};                           & 6.8 s          & 7264 KB    \\
+        \texttt{matrix\_multi.o}    & \texttt{N\_DIMS 700};                              & 4.5 s          & 2172 KB    \\
         \hline
-        \texttt{matrix\_multi\_2.o} & \texttt{N\_DIMS 1400};                           & 4.5 s          & 7264 KB    \\
+        \texttt{matrix\_multi\_2.o} & \texttt{N\_DIMS 700};                              & 4.2 s          & 2160 KB    \\
         \hline
-        \texttt{quicksort.o}        & \texttt{N\_ELEM (3 << 13)};                      & 4.1 s          & 9776 KB    \\
+        \texttt{quicksort.o}        & \texttt{N\_ELEM (1<<14)};                          & 3.1 s          & 4172 KB    \\
         \hline
     \end{tabular}
 \end{table}
