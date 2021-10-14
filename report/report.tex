@@ -526,7 +526,7 @@ Also, I have rounded off the latency to nearest integers to avoid issues with Ch
                                             & \texttt{LLC} & 7268                      & 7548     & 7268        & 7268     & 7268     & 7268     & 7268     \\
         \hline
                                             & \texttt{L1D} & 0.7392                    & 2.0961   & 0.7393      & 0.9130   & 0.7381   & 0.7392   & 0.7392   \\
-        \multirow{2}{*}{MPKI}               & \texttt{L1I} & 0                         & 0.8396   & 0           & 0.0174   & 0        & 0        & 0        \\
+        \multirow{2}{*}{MPKI}               & \texttt{L1I} & 0.0000                    & 0.8396   & 0.0000      & 0.0174   & 0.0000   & 0.0000   & 0.0000   \\
                                             & \texttt{L2C} & 0.7269                    & 0.7707   & 0.7269      & 0.7481   & 0.7268   & 0.7269   & 0.7269   \\
                                             & \texttt{LLC} & 0.7268                    & 0.7548   & 0.7268      & 0.7268   & 0.7268   & 0.7268   & 0.7268   \\
         \hline
@@ -555,7 +555,7 @@ Also, I have rounded off the latency to nearest integers to avoid issues with Ch
                                             & \texttt{LLC} & 7268                      & 7465     & 7268        & 7268     & 7268     & 7268     & 7268     \\
         \hline
                                             & \texttt{L1D} & 0.7392                    & 2.1323   & 0.7393      & 0.9140   & 0.7381   & 0.7392   & 0.7392   \\
-        \multirow{2}{*}{MPKI}               & \texttt{L1I} & 0                         & 0.6867   & 0           & 0.0174   & 0        & 0        & 0        \\
+        \multirow{2}{*}{MPKI}               & \texttt{L1I} & 0.0000                    & 0.6867   & 0.0000      & 0.0174   & 0.0000   & 0.0000   & 0.0000   \\
                                             & \texttt{L2C} & 0.7269                    & 0.7857   & 0.7269      & 0.7483   & 0.7268   & 0.7269   & 0.7269   \\
                                             & \texttt{LLC} & 0.7268                    & 0.7645   & 0.7268      & 0.7268   & 0.7268   & 0.7268   & 0.7268   \\
         \hline
@@ -563,6 +563,35 @@ Also, I have rounded off the latency to nearest integers to avoid issues with Ch
         Avg Miss                            & \texttt{L1I} & -                         & 14.8274  & -           & 19.4425  & -        & -        & -        \\
         Latency                             & \texttt{L2C} & 103.181                   & 105.285  & 103.057     & 107.273  & 113.948  & 102.88   & 104.45   \\
                                             & \texttt{LLC} & 73.1791                   & 81.0347  & 73.0553     & 84.0922  & 76.9375  & 72.8782  & 74.4483  \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+\section{\texttt{quicksort.trace.xz}}
+\begin{table}[H]
+    \begin{tabular}{||c|c||c||c|c||c|c||c|c||}
+        \hline
+        \multicolumn{2}{||c||}{\multirow{2}{*}{Parameter}} & \multirow{2}{*}{Baseline} & Direct   & Fully       & Reduced  & Doubled  & Reduced  & Doubled  \\
+        \multicolumn{2}{||c||}{}                           &                           & Mapped   & Associative & Size     & Size     & MSHR     & MSHR     \\
+        \hline
+        \multicolumn{2}{||c||}{cycles}                     & 23473142                  & 32062866 & 23473142    & 23492281 & 23585074 & 23473142 & 23473142 \\
+        \multicolumn{2}{||c||}{IPC}                        & 0.426019                  & 0.311887 & 0.426019    & 0.425672 & 0.423997 & 0.426019 & 0.426019 \\
+        \hline
+                                            & \texttt{L1D} & 62136                     & 1191142  & 62136       & 62136    & 62136    & 62136    & 62136    \\
+        Cache                               & \texttt{L1I} & 0                         & 102      & 0           & 0        & 0        & 0        & 0        \\
+        Misses                              & \texttt{L2C} & 12300                     & 16609    & 12300       & 14630    & 12297    & 12300    & 12300    \\
+                                            & \texttt{LLC} & 12296                     & 18305    & 12293       & 12297    & 12290    & 12296    & 12296    \\
+        \hline
+                                            & \texttt{L1D} & 6.2136                    & 119.1142 & 6.2136      & 6.2136   & 6.2136   & 6.2136   & 6.2136   \\
+        \multirow{2}{*}{MPKI}               & \texttt{L1I} & 0.0000                    & 0.0102   & 0.0000      & 0.0000   & 0.0000   & 0.0000   & 0.0000   \\
+                                            & \texttt{L2C} & 1.2300                    & 1.6609   & 1.2300      & 1.4630   & 1.2297   & 1.2300   & 1.2300   \\
+                                            & \texttt{LLC} & 1.2296                    & 1.8305   & 1.2293      & 1.2297   & 1.2290   & 1.2296   & 1.2296   \\
+        \hline
+                                            & \texttt{L1D} & 37.1162                   & 11.9622  & 37.2176     & 52.8647  & 40.495   & 37.1162  & 37.1162  \\
+        Avg Miss                            & \texttt{L1I} & -                         & 90.6176  & -           & -        & -        & -        & -        \\
+        Latency                             & \texttt{L2C} & 111.698                   & 119.162  & 112.211     & 165.043  & 113.641  & 111.698  & 111.698  \\
+                                            & \texttt{LLC} & 81.725                    & 81.2332  & 82.2574     & 165.422  & 76.6843  & 81.725   & 81.725   \\
         \hline
     \end{tabular}
 \end{table}
