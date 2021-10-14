@@ -405,5 +405,41 @@ Used xz to compress the traces: \\
     \end{tabular}
 \end{table}
 
+\section{Setup Configurations}
+
+To speed up the task and to avoid having to reset to default values again and again, I prepared 7 copies of ChampSim in the docker container. \\
+This helped me run the 28 simulations in parallel and the entire experiment took 5-6 minutes to finish.
+
+To setup each of the Configurations, I had to modify \texttt{./inc/cache.h}.
+
+\begin{table}[H]
+    \begin{tabular}{||c|c||c||c|c||c|c||c|c||}
+        \hline
+        \multirow{2}{*}{Line} & \multirow{2}{*}{Parameter} & \multirow{2}{*}{Baseline} & Direct  & Fully       & Reduced & Doubled & Reduced & Doubled \\
+                              &                            &                           & Mapped  & Associative & Size    & Size    & MSHR    & MSHR    \\
+        \hline
+        46                    & \texttt{L1I\_SET}          & 64                        & 64*8    & 1           & 32      & 128     & 64      & 64      \\
+        47                    & \texttt{L1I\_WAY}          & 8                         & 1       & 8*64        & 8       & 8       & 8       & 8       \\
+        51                    & \texttt{L1I\_MSHR\_SIZE}   & 8                         & 8       & 8           & 8       & 8       & 4       & 16      \\
+        52                    & \texttt{L1I\_LATENCY}      & 4                         & 4       & 4           & 4       & 4       & 4       & 4       \\
+        \hline
+        55                    & \texttt{L1D\_SET}          & 64                        & 64*12   & 1           & 32      & 128     & 64      & 64      \\
+        56                    & \texttt{L1D\_WAY}          & 12                        & 1       & 12*64       & 12      & 12      & 12      & 12      \\
+        60                    & \texttt{L1D\_MSHR\_SIZE}   & 16                        & 16      & 16          & 16      & 16      & 8       & 32      \\
+        61                    & \texttt{L1D\_LATENCY}      & 5                         & 5       & 5           & 5       & 5       & 5       & 5       \\
+        \hline
+        64                    & \texttt{L2C\_SET}          & 1024                      & 1024*8  & 1           & 512     & 2048    & 1024    & 1024    \\
+        65                    & \texttt{L2C\_WAY}          & 8                         & 1       & 8*1024      & 8       & 8       & 8       & 8       \\
+        69                    & \texttt{L2C\_MSHR\_SIZE}   & 32                        & 32      & 32          & 32      & 32      & 16      & 64      \\
+        70                    & \texttt{L2C\_LATENCY}      & 10                        & 10      & 10          & 9       & 13      & 10      & 10      \\
+        \hline
+        73                    & \texttt{LLC\_SET}          & 2048                      & 2048*16 & 1           & 1024    & 4096    & 2048    & 2048    \\
+        74                    & \texttt{LLC\_WAY}          & 16                        & 1       & 16*2048     & 16      & 16      & 16      & 16      \\
+        78                    & \texttt{LLC\_MSHR\_SIZE}   & 64                        & 64      & 64          & 64      & 64      & 32      & 128     \\
+        79                    & \texttt{LLC\_LATENCY}      & 20                        & 20      & 20          & 17      & 24      & 20      & 20      \\
+        \hline
+    \end{tabular}
+\end{table}
+
 
 \end{document}
