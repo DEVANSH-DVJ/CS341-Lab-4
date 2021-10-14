@@ -481,4 +481,34 @@ Also, I have rounded off the latency to nearest integers to avoid issues with Ch
 \end{table}
 
 
+\section{\texttt{bfs.trace.xz}}
+\begin{table}[H]
+    \begin{tabular}{||c|c||c||c|c||c|c||c|c||}
+        \hline
+        \multicolumn{2}{||c||}{\multirow{2}{*}{Parameter}} & \multirow{2}{*}{Baseline} & Direct   & Fully       & Reduced  & Doubled  & Reduced  & Doubled  \\
+        \multicolumn{2}{||c||}{}                           &                           & Mapped   & Associative & Size     & Size     & MSHR     & MSHR     \\
+        \hline
+        \multicolumn{2}{||c||}{cycles}                     & 11505060                  & 11548164 & 11510528    & 11646705 & 11410653 & 11505205 & 11504968 \\
+        \multicolumn{2}{||c||}{IPC}                        & 0.869183                  & 0.865938 & 0.86877     & 0.858612 & 0.876374 & 0.869172 & 0.86919  \\
+        \hline
+                                            & \texttt{L1D} & 21942                     & 30732    & 21942       & 21947    & 21931    & 21942    & 21972    \\
+        Cache                               & \texttt{L1I} & 1                         & 201163   & 1           & 9        & 1        & 1        & 1        \\
+        Misses                              & \texttt{L2C} & 21464                     & 23645    & 21727       & 21881    & 14648    & 21464    & 21464    \\
+                                            & \texttt{LLC} & 13437                     & 14032    & 13437       & 14920    & 13436    & 13437    & 13437    \\
+        \hline
+                                            & \texttt{L1D} & 2.1942                    & 3.0732   & 2.1942      & 2.1947   & 2.1931   & 2.1942   & 2.1972   \\
+        \multirow{2}{*}{MPKI}               & \texttt{L1I} & 0.0001                    & 20.1163  & 0.0001      & 0.0009   & 0.0001   & 0.0001   & 0.0001   \\
+                                            & \texttt{L2C} & 2.1464                    & 2.3645   & 2.1727      & 2.1881   & 1.4648   & 2.1464   & 2.1464   \\
+                                            & \texttt{LLC} & 1.3437                    & 1.4032   & 1.3437      & 1.4920   & 1.3436   & 1.3437   & 1.3437   \\
+        \hline
+                                            & \texttt{L1D} & 91.8093                   & 71.4266  & 91.6041     & 130.174  & 85.5957  & 91.7903  & 91.844   \\
+        Avg Miss                            & \texttt{L1I} & 215                       & 14.1125  & 215         & 57.6667  & 229      & 215      & 215      \\
+        Latency                             & \texttt{L2C} & 78.5156                   & 73.5786  & 77.3577     & 116.525  & 107.193  & 78.4964  & 78.5508  \\
+                                            & \texttt{LLC} & 77.5087                   & 79.0059  & 76.5858     & 132.767  & 76.5338  & 77.4779  & 77.5649  \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+
 \end{document}
