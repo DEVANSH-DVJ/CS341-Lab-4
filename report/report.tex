@@ -521,7 +521,7 @@ Also, I have rounded off the latency to nearest integers to avoid issues with Ch
         \multicolumn{2}{||c||}{IPC}                        & 0.567407                  & 0.565071 & 0.567407    & 0.56736  & 0.567404 & 0.567394 & 0.567409 \\
         \hline
                                             & \texttt{L1D} & 7392                      & 20961    & 7393        & 9130     & 7381     & 7392     & 7392     \\
-        Cache                               & \texttt{L1I} & 0                         & 8396     & 0           & 0174     & 0        & 0        & 0        \\
+        Cache                               & \texttt{L1I} & 0                         & 8396     & 0           & 174      & 0        & 0        & 0        \\
         Misses                              & \texttt{L2C} & 7269                      & 7707     & 7269        & 7481     & 7268     & 7269     & 7269     \\
                                             & \texttt{LLC} & 7268                      & 7548     & 7268        & 7268     & 7268     & 7268     & 7268     \\
         \hline
@@ -534,6 +534,35 @@ Also, I have rounded off the latency to nearest integers to avoid issues with Ch
         Avg Miss                            & \texttt{L1I} & -                         & 14.2587  & -           & 20.1954  & -        & -        & -        \\
         Latency                             & \texttt{L2C} & 103.766                   & 103.328  & 103.766     & 106.711  & 114.666  & 103.277  & 105.36   \\
                                             & \texttt{LLC} & 73.7643                   & 76.0135  & 73.7643     & 83.4732  & 77.6564  & 73.275   & 75.3581  \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+\section{\texttt{matrix\_multi\_2.trace.xz}}
+\begin{table}[H]
+    \begin{tabular}{||c|c||c||c|c||c|c||c|c||}
+        \hline
+        \multicolumn{2}{||c||}{\multirow{2}{*}{Parameter}} & \multirow{2}{*}{Baseline} & Direct   & Fully       & Reduced  & Doubled  & Reduced  & Doubled  \\
+        \multicolumn{2}{||c||}{}                           &                           & Mapped   & Associative & Size     & Size     & MSHR     & MSHR     \\
+        \hline
+        \multicolumn{2}{||c||}{cycles}                     & 17622240                  & 17694653 & 17622240    & 17623493 & 17622347 & 17622647 & 17622268 \\
+        \multicolumn{2}{||c||}{IPC}                        & 0.567465                  & 0.565143 & 0.567465    & 0.567424 & 0.567461 & 0.567452 & 0.567464 \\
+        \hline
+                                            & \texttt{L1D} & 7392                      & 21323    & 7393        & 9140     & 7381     & 7392     & 7392     \\
+        Cache                               & \texttt{L1I} & 0                         & 6867     & 0           & 174      & 0        & 0        & 0        \\
+        Misses                              & \texttt{L2C} & 7269                      & 7857     & 7269        & 7483     & 7268     & 7269     & 7269     \\
+                                            & \texttt{LLC} & 7268                      & 7465     & 7268        & 7268     & 7268     & 7268     & 7268     \\
+        \hline
+                                            & \texttt{L1D} & 0.7392                    & 2.1323   & 0.7393      & 0.9140   & 0.7381   & 0.7392   & 0.7392   \\
+        \multirow{2}{*}{MPKI}               & \texttt{L1I} & 0                         & 0.6867   & 0           & 0.0174   & 0        & 0        & 0        \\
+                                            & \texttt{L2C} & 0.7269                    & 0.7857   & 0.7269      & 0.7483   & 0.7268   & 0.7269   & 0.7269   \\
+                                            & \texttt{LLC} & 0.7268                    & 0.7645   & 0.7268      & 0.7268   & 0.7268   & 0.7268   & 0.7268   \\
+        \hline
+                                            & \texttt{L1D} & 116.464                   & 53.2717  & 116.329     & 101.704  & 130.203  & 116.168  & 117.712  \\
+        Avg Miss                            & \texttt{L1I} & -                         & 14.8274  & -           & 19.4425  & -        & -        & -        \\
+        Latency                             & \texttt{L2C} & 103.181                   & 105.285  & 103.057     & 107.273  & 113.948  & 102.88   & 104.45   \\
+                                            & \texttt{LLC} & 73.1791                   & 81.0347  & 73.0553     & 84.0922  & 76.9375  & 72.8782  & 74.4483  \\
         \hline
     \end{tabular}
 \end{table}
