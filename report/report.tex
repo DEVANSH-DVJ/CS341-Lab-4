@@ -405,7 +405,6 @@ The lines (present in \texttt{quicksort.cpp}) consuming the majority of time is 
 Quicksort algorithm is mostly partitioning and swapping, so those two functions take the majority of the time.
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Part 2: Simulating with ChampSim
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -420,7 +419,7 @@ Used xz to compress the traces: \\
 \texttt{xz -vz <program>.trace --threads=0;}
 
 \begin{table}[H]
-    \begin{tabular}{||l||l|c||c||}
+    \begin{tabular}{||c||c|c||c||}
         \hline
         Program                     & Parameters                                         & Execution time & Trace size \\
         \hline
@@ -442,6 +441,16 @@ This helped me run the 28 simulations in parallel and the entire experiment took
 
 To setup each of the Configurations, I had to modify \texttt{./inc/cache.h}.
 
+I have used \hyperlink{https://github.com/HewlettPackard/cacti}{CACTI} to compute the latency updates for changes in cache size. \\
+Theoretically, there would be change in latency when we change associativity as well but as it wasn't present in PS I have ignored it. \\
+As hinted by professor, latency of 12-way cache is computed by taking mean of latency of 8-way and 16-way caches keeping sets as constant. \\
+For \texttt{L1I} and \texttt{L1D} caches, the change in access time was small, so the latency remains same across the configurations. \\
+Also, I have rounded off the latency to nearest integers to avoid issues with ChampSim. \\
+(For example, I got \texttt{L1I\_LATENCY} to be 3.8 and 4.2 for half and double size cache respectively. I have consider both of them as 4 - same as baseline) \\
+
+
+\newpage
+\subsection*{Updates in \texttt{./inc/cache.h}}
 \begin{table}[H]
     \begin{tabular}{||c|c||c||c|c||c|c||c|c||}
         \hline
