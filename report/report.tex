@@ -132,7 +132,7 @@ Installed successfully using the stand-alone app using offline installer script 
 It was pretty easy to install \texttt{VTune} using the script. \\
 While installing it showed that I didn't have \texttt{XCB} and \texttt{DRM} packages installed. Upon checking, I confirmed that they were already present. \\
 Even though it failed prerequisites, there was a next option. I didn't face any issues for the rest of installation process. \\
-From start to end, it took around 10-12 minutes to have the application installed. Followed by 3-5 minutes for tutorial.
+From start to end, it took around 10-12 minutes to have the application installed, followed by 3-5 minutes for tutorial.
 
 \section*{Install \texttt{Docker}}
 Had docker setup from other projects. \\
@@ -205,6 +205,15 @@ Pulled \texttt{0xd3ba/champsim-lab:latest}
     \caption{Top Source lines by CPU Utilization for \texttt{bfs.cpp}}
 \end{figure}
 
+\subsection*{Inference}
+We see that majority of the time goes in function \texttt{bfs}.
+
+The time consuming line in \texttt{main} is calling \texttt{bfs(root)}. This would be due to the need to set the function stack and as it is done for \texttt{N\_LOOPS} times, it climbs above \texttt{plant\_a\_tree} and \texttt{bulldoze\_the\_tree} stack setup.
+
+Every line in \texttt{bfs} is called repeatedly due to 3 level of loops (2 level in \texttt{bfs} and 1 level in \texttt{main}). \\
+These lines combined consume the majority of CPU time (\~50\%).
+
+
 \newpage
 \section{\texttt{matrix\_multi.cpp}}
 
@@ -259,6 +268,13 @@ Pulled \texttt{0xd3ba/champsim-lab:latest}
     \caption{Top Source lines by CPU Utilization for \texttt{matrix\_multi.cpp}}
 \end{figure}
 
+\subsection*{Inference}
+We see that majority of the time goes in function \texttt{matrix\_product}.
+
+As discussed in lectures, \texttt{ijk} is not the optimal loop order for memory access. We see that the inner loop takes most of the time. \\
+And we access and modify \texttt{k} at every iteration of the inner loop, it is the line to take second most CPU time.
+
+
 \newpage
 \section{\texttt{matrix\_multi\_2.cpp}}
 
@@ -312,6 +328,13 @@ Pulled \texttt{0xd3ba/champsim-lab:latest}
     \includegraphics[scale=0.25]{vtune/matrix_multi_2/sc.png}
     \caption{Top Source lines by CPU Utilization for \texttt{matrix\_multi\_2.cpp}}
 \end{figure}
+
+\subsection*{Inference}
+We see that majority of the time goes in function \texttt{matrix\_product}.
+
+As discussed in lectures, \texttt{jik} (same as \texttt{ijk}) is not the optimal loop order for memory access. We see that the inner loop takes most of the time. \\
+And we access and modify \texttt{k} at every iteration of the inner loop, it is the line to take second most CPU time.
+
 
 \newpage
 \section{\texttt{quicksort.cpp}}
@@ -374,6 +397,13 @@ Pulled \texttt{0xd3ba/champsim-lab:latest}
     \includegraphics[scale=0.25]{vtune/quicksort/sc.png}
     \caption{Top Source lines by CPU Utilization for \texttt{quicksort.cpp}}
 \end{figure}
+
+\subsection*{Inference}
+We see that majority of the time goes in handling page faults and \texttt{memmove}. Possible explanation is that because it crosses my limit of RAM and overflows in swap memory, we might be getting page faults and page needs to be loaded back from the swap memory. (We discussed this in OS course)
+
+The lines (present in \texttt{quicksort.cpp}) consuming the majority of time is mostly because of the number of times it is executed. \\
+Quicksort algorithm is mostly partitioning and swapping, so those two functions take the majority of the time.
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
