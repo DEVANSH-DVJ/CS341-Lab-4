@@ -211,7 +211,7 @@ plt.xticks(rotation='horizontal')
 
 plt.xlabel('Trace files', fontsize='xx-large')
 plt.ylabel('Normalized IPC', fontsize='xx-large')
-plt.title('IPC (Instructions per cycles)', fontsize='xx-large')
+plt.title('IPC (Instructions per cycle)', fontsize='xx-large')
 
 plt.legend(fontsize='x-large', ncol=3, loc='upper center')
 plt.grid()
