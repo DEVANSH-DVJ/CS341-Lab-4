@@ -120,7 +120,13 @@
 %% Abstract
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{\centerline{Abstract}}
-Summarize the objective of the lab, what experiments you have conducted, what were the results that you have obtained in a clear and concise manner. Numbers matter, not just words only, for ex. \emph{very high}, \emph{slow} etc.
+This lab consists of two parts. In the first part of the lab, we are tasked with profiling and analysing the run-time behaviour of few provided applications using Intel VTune Profiler. \\
+In the second part of the lab, we are tasked with running the same applications on a simulator, known as \texttt{ChampSim}, to understand the performance impact caused by different configurations of caches in a system. \\
+
+From second pat of the lab, we can conclude the provided programs weren't affected by change in MSHR size - IPC remained constant to 4th decimal place. \\
+We saw a significant increase in misses when using direct mapped cache - MPKI for L1 cache increased by 300\% for matrix multiplication programs, 950\% for bfs program and 1800\% for quicksort program. \\
+As we see no effect of increasing the associativity, we can safely conclude that the current level of associativity is good for the given programs. \\
+Changing the cache size only has positive effect on bfs program (increasing cache size reduces MPKI for L1D by 30\%).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Part 0: Getting Things Ready
