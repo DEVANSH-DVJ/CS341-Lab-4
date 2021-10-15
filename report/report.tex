@@ -481,6 +481,17 @@ Also, I have rounded off the latency to nearest integers to avoid issues with Ch
 \end{table}
 
 
+\section{Run simulations}
+
+Build champsim: \\
+\texttt{./build\_champsim.sh bimodal no no no no lru 1;} \\
+Run simulation for traces: \\
+\texttt{./run\_champsim.sh bimodal-no-no-no-no-lru-1core 10 10 bfs.trace.xz \&;} \\
+\texttt{./run\_champsim.sh bimodal-no-no-no-no-lru-1core 10 10 matrix\_multi.trace.xz \&;} \\
+\texttt{./run\_champsim.sh bimodal-no-no-no-no-lru-1core 10 10 matrix\_multi\_2.trace.xz \&;} \\
+\texttt{./run\_champsim.sh bimodal-no-no-no-no-lru-1core 10 10 quicksort.trace.xz \&;} \\
+
+
 \section{\texttt{bfs.trace.xz}}
 \begin{table}[H]
     \begin{tabular}{||c|c||c||c|c||c|c||c|c||}
