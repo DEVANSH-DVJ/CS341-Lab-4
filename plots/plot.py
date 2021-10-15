@@ -41,7 +41,6 @@ ipc = {
     },
 }
 
-
 mpki_l1d = {
     'bfs.trace.xz': {
         'baseline': 2.1942,
@@ -158,6 +157,46 @@ mpki_l2 = {
         'doubled-mshr': 1.2300,
     },
 }
+
+mpki_l3 = {
+    'bfs.trace.xz': {
+        'baseline': 1.3437,
+        'direct-mapped': 1.4032,
+        'fully-associated': 1.3437,
+        'reduced-size': 1.4920,
+        'doubled-size': 1.3436,
+        'reduced-mshr': 1.3437,
+        'doubled-mshr': 1.3437,
+    },
+    'matrix_multi.trace.xz': {
+        'baseline': 0.7268,
+        'direct-mapped': 0.7548,
+        'fully-associated': 0.7268,
+        'reduced-size': 0.7268,
+        'doubled-size': 0.7268,
+        'reduced-mshr': 0.7268,
+        'doubled-mshr': 0.7268,
+    },
+    'matrix_multi_2.trace.xz': {
+        'baseline': 0.7268,
+        'direct-mapped': 0.7645,
+        'fully-associated': 0.7268,
+        'reduced-size': 0.7268,
+        'doubled-size': 0.7268,
+        'reduced-mshr': 0.7268,
+        'doubled-mshr': 0.7268,
+    },
+    'quicksort.trace.xz': {
+        'baseline': 1.2296,
+        'direct-mapped': 1.8305,
+        'fully-associated': 1.2293,
+        'reduced-size': 1.2297,
+        'doubled-size': 1.2290,
+        'reduced-mshr': 1.2296,
+        'doubled-mshr': 1.2296,
+    },
+}
+
 
 df = pd.DataFrame(ipc).transpose()
 df = df.div(df.baseline, axis=0)
