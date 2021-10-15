@@ -211,6 +211,7 @@ plt.xticks(rotation='horizontal')
 
 plt.xlabel('Trace files', fontsize='xx-large')
 plt.ylabel('Normalized IPC', fontsize='xx-large')
+plt.title('IPC (Instructions per cycles)', fontsize='xx-large')
 
 plt.legend(fontsize='x-large', ncol=3, loc='upper center')
 plt.grid()
@@ -233,6 +234,7 @@ plt.xticks(rotation='horizontal')
 
 plt.xlabel('Trace files', fontsize='xx-large')
 plt.ylabel('Normalized MPKI', fontsize='xx-large')
+plt.title('MPKI (Misses per kilo instructions) for L1 caches (L1D + L1I)', fontsize='xx-large')
 
 plt.legend(fontsize='x-large', ncol=3, loc='upper center')
 plt.grid()
@@ -256,6 +258,7 @@ plt.xticks(rotation='horizontal')
 
 plt.xlabel('Trace files', fontsize='xx-large')
 plt.ylabel('Normalized MPKI', fontsize='xx-large')
+plt.title('MPKI (Misses per kilo instructions) for L2 cache (L2C)', fontsize='xx-large')
 
 plt.legend(fontsize='x-large', ncol=3, loc='upper center')
 plt.grid()
@@ -276,6 +279,7 @@ plt.xticks(rotation='horizontal')
 
 plt.xlabel('Trace files', fontsize='xx-large')
 plt.ylabel('Normalized MPKI', fontsize='xx-large')
+plt.title('MPKI (Misses per kilo instructions) for L3 cache (LLC)', fontsize='xx-large')
 
 plt.legend(fontsize='x-large', ncol=3, loc='upper center')
 plt.grid()
