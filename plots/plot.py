@@ -81,6 +81,44 @@ mpki_l1d = {
     },
 }
 
+mpki_l1i = {
+    'bfs.trace.xz': {
+        'baseline': 0.0001,
+        'direct-mapped': 20.1163,
+        'fully-associated': 0.0001,
+        'reduced-size': 0.0009,
+        'doubled-size': 0.0001,
+        'reduced-mshr': 0.0001,
+        'doubled-mshr': 0.0001,
+    },
+    'matrix_multi.trace.xz': {
+        'baseline': 0,
+        'direct-mapped': 0.8396,
+        'fully-associated': 0,
+        'reduced-size': 0.0174,
+        'doubled-size': 0,
+        'reduced-mshr': 0,
+        'doubled-mshr': 0,
+    },
+    'matrix_multi_2.trace.xz': {
+        'baseline': 0,
+        'direct-mapped': 0.6867,
+        'fully-associated': 0,
+        'reduced-size': 0.0174,
+        'doubled-size': 0,
+        'reduced-mshr': 0,
+        'doubled-mshr': 0,
+    },
+    'quicksort.trace.xz': {
+        'baseline': 0,
+        'direct-mapped': 0.0102,
+        'fully-associated': 0,
+        'reduced-size': 0,
+        'doubled-size': 0,
+        'reduced-mshr': 0,
+        'doubled-mshr': 0,
+    },
+}
 
 df = pd.DataFrame(ipc).transpose()
 df = df.div(df.baseline, axis=0)
