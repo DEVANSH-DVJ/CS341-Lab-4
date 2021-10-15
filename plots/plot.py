@@ -262,3 +262,23 @@ plt.grid()
 
 plt.savefig('mpki_l2.png')
 plt.show()
+
+df = pd.DataFrame(mpki_l3).transpose()
+df = df.div(df.baseline, axis=0)
+df = df.drop('baseline', axis=1)
+print(df)
+df.plot.bar(figsize=(16, 9))
+
+plt.ylim(0.8, 1.6)
+plt.axhline(y=1, linewidth=1, color='k')
+
+plt.xticks(rotation='horizontal')
+
+plt.xlabel('Trace files', fontsize='xx-large')
+plt.ylabel('Normalized MPKI', fontsize='xx-large')
+
+plt.legend(fontsize='x-large', ncol=3, loc='upper center')
+plt.grid()
+
+plt.savefig('mpki_l3.png')
+plt.show()
