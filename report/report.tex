@@ -611,35 +611,89 @@ The entire experiment ends in around 10 minutes.
 
 
 \section{Results}
-\subsection{IPC}
+\subsection{Direct Mapped}
+IPC decreases significantly for direct-mapped configuration - approx 27\% for quicksort and 0.5\% for others. The reason is that due to reduction in associativity, the number of collision misses increase. And as quicksort revisits the same address a lot of times ($\mathcal{O}(N)$), the decrease is much more significant.
+
+It highly affects the MPKI of L1 caches. Due to smaller size, the chances of collisions increase and it explodes the change in MPKI (had to trim the plot due to this fact). It is 4x for matrix multiplication programs, 10.5x for bfs and 19x for quicksort.
+
+This effect is reduced and carried over to the lower caches.
+
+Unlike baseline where most of the misses had to go to the DRAM, here a lot of the misses are found in the next level cache. This reduces the Average Miss Latency.
+
+\subsection{Fully Associative}
+IPC remains constant for fully-associative. The number of collision misses in baseline would be close to zero, thus increasing associativity doesn't affect the IPC either.
+
+MPKI and Average Miss latency also remains constant (up to a few decimal places)
+
+\subsection{Reduced Size}
+IPC isn't affected by changing cache size in matrix multiplication programs. The reason is the working set is way larger than the cache size.
+
+We see a slight increase (25\%) in L1D cache. This degradation is compensated by reduced access time for lower level caches.
+
+Average Miss Latency of L1D decrease while increases for L2C and LLC. \\
+
+For bfs program, reducing cache size decreases the IPC. The reason is a slight increase (11\%) in LLC misses and increase in average Miss Latency.
+
+The reason for change in Average Miss latency is that the chances of finding the miss in next level cache reduces thus having to go further down. \\
+
+IPC isn't affected by changing cache size in quicksort program.
+
+We see a slight increase (18\%) in L2C misses. This degradation is compensated by reduced access time for lower level caches.
+
+Average Miss Latency increases. The reason is that the chances of finding the miss in next level cache reduces thus having to go further down.
+
+\subsection{Doubled Size}
+We see a slight decrease in MPKI (less than 1\%), except in L2C of bfs program (significant decrease of 31\%).
+
+We also notice an increase in Average Miss Latency. The reason is due to increase in access time for larger caches.
+
+Thus, we see no change in IPC except in bfs - decrease in MPKI results in improved IPC.
+
+\subsection{Reduced MSHR}
+IPC and MPKI remains constant to 4th decimal place. The reason is that decreasing MSHR size doesn't affect the number of misses in either of the programs - it might not get filled to even half of it.
+
+There is minor decrease in average miss latency for reduced MSHR. This could be due to less time required to check the queue. But as the difference is less than a cycle, it doesn't affect the IPC.
+
+\subsection{Doubled MSHR}
+IPC and MPKI remains constant to 4th decimal place. The reason is that increasing MSHR size doesn't affect the number of misses in either of the programs - it might not get filled at all.
+
+There is minor increase in average miss latency for doubled MSHR. This could be due to more time required to check the queue. But as the difference is less than a cycle, it doesn't affect the IPC.
+
+\vfill*{}
+
+\textit{Note: I haven't compared the L1I Average Miss Latency as the misses are single digit in most of the simulations which is insignificant compared to 10 million instructions}
+
+\newpage
+\subsection{Plots}
+\textbf{IPC}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{champsim/speedup.png}
+    \includegraphics[scale=0.35]{champsim/speedup.png}
     \caption{IPC (Instructions per cycle)}
 \end{figure}
 
-\subsection{MPKI for L1 caches (L1D + L1I)}
+
+\textbf{MPKI for L1 caches (L1D + L1I)}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{champsim/mpki_l1.png}
+    \includegraphics[scale=0.35]{champsim/mpki_l1.png}
     \caption{MPKI (Misses per kilo instructions) for L1 caches (L1D + L1I)}
 \end{figure}
 
-\subsection{MPKI for L2 cache (L2C)}
+\textbf{MPKI for L2 cache (L2C)}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{champsim/mpki_l2.png}
+    \includegraphics[scale=0.35]{champsim/mpki_l2.png}
     \caption{MPKI (Misses per kilo instructions) for L2 cache (L2C)}
 \end{figure}
 
-\subsection{MPKI for L3 cache (LLC)}
+\textbf{MPKI for L3 cache (LLC)}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{champsim/mpki_l3.png}
+    \includegraphics[scale=0.35]{champsim/mpki_l3.png}
     \caption{MPKI (Misses per kilo instructions) for L3 cache (LLC)}
 \end{figure}
 
-\subsection{Average Miss Latency}
 
 
 \end{document}
