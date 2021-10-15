@@ -49,7 +49,7 @@ mpki_l1d = {
         'reduced-size': 2.1947,
         'doubled-size': 2.1931,
         'reduced-mshr': 2.1942,
-        'doubled-mshr': 2.1972,
+        'doubled-mshr': 2.1942,
     },
     'matrix_multi.trace.xz': {
         'baseline': 0.7392,
