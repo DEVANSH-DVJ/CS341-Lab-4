@@ -101,3 +101,25 @@ plt.grid()
 
 plt.savefig('speedup.png')
 plt.show()
+
+df = pd.DataFrame(mpki_l1d).transpose()
+df = df.div(df.baseline, axis=0)
+df = df.drop('baseline', axis=1)
+print(df)
+df.plot.bar(figsize=(16, 9))
+
+plt.ylim(0.9, 4)
+plt.axhline(y=1, linewidth=1, color='k')
+
+plt.xticks(rotation='horizontal')
+
+plt.xlabel('Trace files', fontsize='xx-large')
+plt.ylabel('Normalized MPKI', fontsize='xx-large')
+
+plt.legend(fontsize='x-large', ncol=3, loc='upper center')
+plt.grid()
+
+plt.text(2.1, 3.5, '*direct-mapped of quicksort.trace.xz reaches 19.17', fontsize='large')
+
+plt.savefig('mpki_l1d.png')
+plt.show()
