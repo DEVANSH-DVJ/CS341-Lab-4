@@ -222,42 +222,42 @@ plt.show()
 df1 = pd.DataFrame(mpki_l1d).transpose()
 df2 = pd.DataFrame(mpki_l1i).transpose()
 df = df1.add(df2)
-df = df.div(df.baseline, axis=0)
+df = df.sub(df.baseline, axis=0).div(df.baseline, axis=0) * 100
 df = df.drop('baseline', axis=1)
 print(df)
 df.plot.bar(figsize=(16, 9))
 
-plt.ylim(0.9, 4.5)
-plt.axhline(y=1, linewidth=1, color='k')
+plt.ylim(-10, 350)
+plt.axhline(y=0, linewidth=1, color='k')
 
 plt.xticks(rotation='horizontal')
 
 plt.xlabel('Trace files', fontsize='xx-large')
-plt.ylabel('Normalized MPKI', fontsize='xx-large')
+plt.ylabel('MPKI Improvement/Degradation (%)', fontsize='xx-large')
 plt.title('MPKI (Misses per kilo instructions) for L1 caches (L1D + L1I)', fontsize='xx-large')
 
 plt.legend(fontsize='x-large', ncol=3, loc='upper center')
 plt.grid()
 
-plt.text(2.1, 3.7, '*direct-mapped of quicksort.trace.xz reaches 19.17', fontsize='large')
-plt.text(-0.6, 3.7, '*direct-mapped of bfs.trace.xz reaches 10.57', fontsize='large')
+plt.text(2.1, 270, '*direct-mapped of quicksort.trace.xz reaches 1817%', fontsize='large')
+plt.text(-0.6, 270, '*direct-mapped of bfs.trace.xz reaches 957%', fontsize='large')
 
 plt.savefig('mpki_l1.png')
 plt.show()
 
 df = pd.DataFrame(mpki_l2).transpose()
-df = df.div(df.baseline, axis=0)
+df = df.sub(df.baseline, axis=0).div(df.baseline, axis=0) * 100
 df = df.drop('baseline', axis=1)
 print(df)
 df.plot.bar(figsize=(16, 9))
 
-plt.ylim(0.6, 1.4)
-plt.axhline(y=1, linewidth=1, color='k')
+plt.ylim(-40, 40)
+plt.axhline(y=0, linewidth=1, color='k')
 
 plt.xticks(rotation='horizontal')
 
 plt.xlabel('Trace files', fontsize='xx-large')
-plt.ylabel('Normalized MPKI', fontsize='xx-large')
+plt.ylabel('MPKI Improvement/Degradation (%)', fontsize='xx-large')
 plt.title('MPKI (Misses per kilo instructions) for L2 cache (L2C)', fontsize='xx-large')
 
 plt.legend(fontsize='x-large', ncol=3, loc='upper center')
@@ -267,18 +267,18 @@ plt.savefig('mpki_l2.png')
 plt.show()
 
 df = pd.DataFrame(mpki_l3).transpose()
-df = df.div(df.baseline, axis=0)
+df = df.sub(df.baseline, axis=0).div(df.baseline, axis=0) * 100
 df = df.drop('baseline', axis=1)
 print(df)
 df.plot.bar(figsize=(16, 9))
 
-plt.ylim(0.8, 1.6)
-plt.axhline(y=1, linewidth=1, color='k')
+plt.ylim(-20, 60)
+plt.axhline(y=0, linewidth=1, color='k')
 
 plt.xticks(rotation='horizontal')
 
 plt.xlabel('Trace files', fontsize='xx-large')
-plt.ylabel('Normalized MPKI', fontsize='xx-large')
+plt.ylabel('MPKI Improvement/Degradation (%)', fontsize='xx-large')
 plt.title('MPKI (Misses per kilo instructions) for L3 cache (LLC)', fontsize='xx-large')
 
 plt.legend(fontsize='x-large', ncol=3, loc='upper center')
