@@ -6,7 +6,7 @@ ipc = {
     'bfs.trace.xz': {
         'baseline': 0.869183,
         'direct-mapped': 0.865938,
-        'fully-associated': 0.86877,
+        'fully-associative': 0.86877,
         'reduced-size': 0.858612,
         'doubled-size': 0.876374,
         'reduced-mshr': 0.869172,
@@ -15,7 +15,7 @@ ipc = {
     'matrix_multi.trace.xz': {
         'baseline': 0.567407,
         'direct-mapped': 0.565071,
-        'fully-associated': 0.567407,
+        'fully-associative': 0.567407,
         'reduced-size': 0.56736,
         'doubled-size': 0.567404,
         'reduced-mshr': 0.567394,
@@ -24,7 +24,7 @@ ipc = {
     'matrix_multi_2.trace.xz': {
         'baseline': 0.567465,
         'direct-mapped': 0.565143,
-        'fully-associated': 0.567465,
+        'fully-associative': 0.567465,
         'reduced-size': 0.567424,
         'doubled-size': 0.567461,
         'reduced-mshr': 0.567452,
@@ -33,7 +33,7 @@ ipc = {
     'quicksort.trace.xz': {
         'baseline': 0.426019,
         'direct-mapped': 0.311887,
-        'fully-associated': 0.426019,
+        'fully-associative': 0.426019,
         'reduced-size': 0.425672,
         'doubled-size': 0.423997,
         'reduced-mshr': 0.426019,
@@ -45,7 +45,7 @@ mpki_l1d = {
     'bfs.trace.xz': {
         'baseline': 2.1942,
         'direct-mapped': 3.0732,
-        'fully-associated': 2.1942,
+        'fully-associative': 2.1942,
         'reduced-size': 2.1947,
         'doubled-size': 2.1931,
         'reduced-mshr': 2.1942,
@@ -54,7 +54,7 @@ mpki_l1d = {
     'matrix_multi.trace.xz': {
         'baseline': 0.7392,
         'direct-mapped': 2.0961,
-        'fully-associated': 0.7393,
+        'fully-associative': 0.7393,
         'reduced-size': 0.9130,
         'doubled-size': 0.7381,
         'reduced-mshr': 0.7392,
@@ -63,7 +63,7 @@ mpki_l1d = {
     'matrix_multi_2.trace.xz': {
         'baseline': 0.7392,
         'direct-mapped': 2.1323,
-        'fully-associated': 0.7393,
+        'fully-associative': 0.7393,
         'reduced-size': 0.9140,
         'doubled-size': 0.7381,
         'reduced-mshr': 0.7392,
@@ -72,7 +72,7 @@ mpki_l1d = {
     'quicksort.trace.xz': {
         'baseline': 6.2136,
         'direct-mapped': 119.1142,
-        'fully-associated': 6.2136,
+        'fully-associative': 6.2136,
         'reduced-size': 6.2136,
         'doubled-size': 6.2136,
         'reduced-mshr': 6.2136,
@@ -84,7 +84,7 @@ mpki_l1i = {
     'bfs.trace.xz': {
         'baseline': 0.0001,
         'direct-mapped': 20.1163,
-        'fully-associated': 0.0001,
+        'fully-associative': 0.0001,
         'reduced-size': 0.0009,
         'doubled-size': 0.0001,
         'reduced-mshr': 0.0001,
@@ -93,7 +93,7 @@ mpki_l1i = {
     'matrix_multi.trace.xz': {
         'baseline': 0,
         'direct-mapped': 0.8396,
-        'fully-associated': 0,
+        'fully-associative': 0,
         'reduced-size': 0.0174,
         'doubled-size': 0,
         'reduced-mshr': 0,
@@ -102,7 +102,7 @@ mpki_l1i = {
     'matrix_multi_2.trace.xz': {
         'baseline': 0,
         'direct-mapped': 0.6867,
-        'fully-associated': 0,
+        'fully-associative': 0,
         'reduced-size': 0.0174,
         'doubled-size': 0,
         'reduced-mshr': 0,
@@ -111,7 +111,7 @@ mpki_l1i = {
     'quicksort.trace.xz': {
         'baseline': 0,
         'direct-mapped': 0.0102,
-        'fully-associated': 0,
+        'fully-associative': 0,
         'reduced-size': 0,
         'doubled-size': 0,
         'reduced-mshr': 0,
@@ -123,7 +123,7 @@ mpki_l2 = {
     'bfs.trace.xz': {
         'baseline': 2.1464,
         'direct-mapped': 2.3645,
-        'fully-associated': 2.1727,
+        'fully-associative': 2.1727,
         'reduced-size': 2.1881,
         'doubled-size': 1.4648,
         'reduced-mshr': 2.1464,
@@ -132,7 +132,7 @@ mpki_l2 = {
     'matrix_multi.trace.xz': {
         'baseline': 0.7269,
         'direct-mapped': 0.7707,
-        'fully-associated': 0.7269,
+        'fully-associative': 0.7269,
         'reduced-size': 0.7481,
         'doubled-size': 0.7268,
         'reduced-mshr': 0.7269,
@@ -141,7 +141,7 @@ mpki_l2 = {
     'matrix_multi_2.trace.xz': {
         'baseline': 0.7269,
         'direct-mapped': 0.7857,
-        'fully-associated': 0.7269,
+        'fully-associative': 0.7269,
         'reduced-size': 0.7483,
         'doubled-size': 0.7268,
         'reduced-mshr': 0.7269,
@@ -150,7 +150,7 @@ mpki_l2 = {
     'quicksort.trace.xz': {
         'baseline': 1.2300,
         'direct-mapped': 1.6609,
-        'fully-associated': 1.2300,
+        'fully-associative': 1.2300,
         'reduced-size': 1.4630,
         'doubled-size': 1.2297,
         'reduced-mshr': 1.2300,
@@ -162,7 +162,7 @@ mpki_l3 = {
     'bfs.trace.xz': {
         'baseline': 1.3437,
         'direct-mapped': 1.4032,
-        'fully-associated': 1.3437,
+        'fully-associative': 1.3437,
         'reduced-size': 1.4920,
         'doubled-size': 1.3436,
         'reduced-mshr': 1.3437,
@@ -171,7 +171,7 @@ mpki_l3 = {
     'matrix_multi.trace.xz': {
         'baseline': 0.7268,
         'direct-mapped': 0.7548,
-        'fully-associated': 0.7268,
+        'fully-associative': 0.7268,
         'reduced-size': 0.7268,
         'doubled-size': 0.7268,
         'reduced-mshr': 0.7268,
@@ -180,7 +180,7 @@ mpki_l3 = {
     'matrix_multi_2.trace.xz': {
         'baseline': 0.7268,
         'direct-mapped': 0.7645,
-        'fully-associated': 0.7268,
+        'fully-associative': 0.7268,
         'reduced-size': 0.7268,
         'doubled-size': 0.7268,
         'reduced-mshr': 0.7268,
@@ -189,7 +189,7 @@ mpki_l3 = {
     'quicksort.trace.xz': {
         'baseline': 1.2296,
         'direct-mapped': 1.8305,
-        'fully-associated': 1.2293,
+        'fully-associative': 1.2293,
         'reduced-size': 1.2297,
         'doubled-size': 1.2290,
         'reduced-mshr': 1.2296,
